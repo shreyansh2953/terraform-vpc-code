@@ -1,5 +1,6 @@
+
 resource "aws_route_table_association" "pu" {
-  count = 2
+  count = length(var.my_subnet_cidr)-2
   subnet_id      = aws_subnet.subnet-terra[count.index].id
   route_table_id = aws_route_table.my-publicrt-table.id
 }
